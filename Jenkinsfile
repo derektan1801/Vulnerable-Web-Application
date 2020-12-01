@@ -5,7 +5,7 @@ pipeline {
 	stages {
 		stage ('Checkout') {
 			steps {
-				git branch:'master', url: 'https://github.com/derektan1801/Vulnerable-Web-Application'
+				git branch:'master', url: 'https://github.com/derektan1801/Vulnerable-Web-Application.git'
 			}
 		}
 		stage('Code Quality Check via SonarQube') {
@@ -14,10 +14,10 @@ pipeline {
 					def scannerHome = tool 'SonarQube';
 					withSonarQubeEnv() {
 						sh "${tool("SonarQube")}/bin/sonar-scanner \
-						-Dsonar.projectKey=OWSAP \
+						-Dsonar.projectKey="OWASP" \
 						-Dsonar.sources=. \
-						-Dsonar.host.url=http://192.168.163.136:9000 \
-						-Dsonar.login=60070b3f5f5e07e30fea698d91985bc963788c49"
+						-Dsonar.host.url="http://192.168.163.136:9000" \
+						-Dsonar.login="c9344a11410bbdb0b64541a5050ce130fc1e0fe3"
 						}
 					}
 				}
